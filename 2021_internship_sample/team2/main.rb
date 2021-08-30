@@ -1,8 +1,8 @@
 require 'dxruby'
 
 
-Window.width = 768
-Window.height = 1024
+Window.width = 700
+Window.height = 800
 Window.caption = "team2"
 
 Window.loop do
