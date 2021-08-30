@@ -1,6 +1,6 @@
 require 'dxruby'
 
-#変更
+
 
 
 Window.width = 700
