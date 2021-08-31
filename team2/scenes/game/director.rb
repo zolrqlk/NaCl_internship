@@ -9,8 +9,15 @@ module Game
       player_img = Image.load("images/player.png")
       player_img.set_color_key(C_WHITE)
       @player = Player.new(200, 175, player_img, 3)
-      @enemy_img = Image.load("images/enemy.png")
-      @enemy_img.set_color_key(C_BLACK)
+      enemy_img_base = Image.load("images/wall.png")
+      enemy_img_base.set_color_key(C_BLACK)
+      not_img = Image.load("images/enemy.png")
+      not_img.set_color_key(C_BLACK)
+      @enemy_img = []
+      @enemy_img[0] = enemy_img_base.slice(0,0,192,64)
+      @enemy_img[1] = not_img
+      @enemy_img[2] = enemy_img_base.slice(192,0,128,64)
+
       @font = Font.new(28)
 
       @shot_img = Image.load("images/player.png")
@@ -20,10 +27,13 @@ module Game
 
     # Scene遷移時に自動呼出しされる規約メソッド
     def reload
+      Enemy.init
       s = 800
       enemy_num = 3
       enemy_num.times do
-        Enemy.add(0,s += -800,@enemy_img)
+        Enemy.add(0,s += -800,@enemy_img[0])
+        Enemy.add(192,s,@enemy_img[1])
+        Enemy.add(320,s,@enemy_img[2])
       end
     end
 
