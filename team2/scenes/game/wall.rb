@@ -16,20 +16,20 @@ module Game
             @@wall_a << img
         end    
 
-        def self.img_s
-            @@wall_s
-        end
-        
-        def self.img_a
-            @@wall_a
-        end
-
         def self.collection
             @@collection
         end
     
-        def self.add(x, y,image)
-            @@collection << self.new(x, y, image)
+        def self.add_s
+            x = rand(-100..350)
+            img = @@wall_s[rand(0..@@wall_s.size - 1)]
+            @@collection << self.new(x, -100, img)
+            return x + img.width + 25
+        end
+
+        def self.add_a(x)
+            img = @@wall_a[rand(0..@@wall_a.size - 1)]
+            @@collection << self.new(x, -100, img)
         end
     
         def update
@@ -46,6 +46,17 @@ module Game
 
         def self.init
             @@collection = []
+        end
+
+        def self.move
+            self.collection.each do |wall|
+                if wall.y > 800
+                  wall.out
+                else
+                  wall.update
+                  wall.draw
+                end
+            end
         end
     end
 end

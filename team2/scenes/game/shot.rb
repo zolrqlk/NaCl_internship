@@ -37,5 +37,18 @@ module Game
         def self.init
             @@collection = []
         end
+
+        def self.move
+            self.collection.each do |shot|
+                if shot
+                  if shot.y < -100
+                    shot.out
+                  else
+                    shot.update
+                    shot.draw
+                  end          
+                end
+            end
+        end
     end
 end

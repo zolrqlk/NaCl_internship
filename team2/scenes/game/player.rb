@@ -3,13 +3,20 @@ module Game
         @@player_img = Image.load("images/player.png")
         @@player_img.set_color_key(C_WHITE)
 
-        def self.init
-            @@player = self.initialize(300, 750, @@player_img, 5)
+        def initialize
+            super
+            self.x = 300
+            self.y = 750
+            self.image = @@player_img
+            @speed = 5
         end
 
-        def initialize(x,y,image,speed)
-            super(x,y,image)
-            @speed = speed
+        def self.x
+            @player.x
+        end
+
+        def self.y
+            @player.y
         end
     
         def update
@@ -35,6 +42,19 @@ module Game
 
         def hit(obj)
             Scene.move_to(:ending)
+        end
+
+        def self.init
+            @player = self.new
+        end
+
+        def self.move
+            @player.update
+            @player.draw
+        end
+
+        def self.body
+            @player
         end
     end
 end

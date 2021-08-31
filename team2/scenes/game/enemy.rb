@@ -3,17 +3,14 @@ module Game
         @@collection = []
         @@not_img = Image.load("images/enemy.png")
         @@not_img.set_color_key(C_BLACK)
-
-        def self.img
-            @@not_img
-        end
         
         def self.collection
             @@collection
         end
     
-        def self.add(x, y,image)
-            @@collection << self.new(x, y, image)
+        def self.add(x)
+            @@collection << self.new(x, -100, @@not_img)
+            return x + @@not_img.width + 25
         end
     
         def update
@@ -31,6 +28,17 @@ module Game
 
         def self.init
             @@collection = []
+        end
+
+        def self.move
+            self.collection.each do |enemy|
+                if enemy.y > 800
+                  enemy.out
+                else
+                  enemy.update
+                  enemy.draw
+                end
+            end
         end
     end
 end
