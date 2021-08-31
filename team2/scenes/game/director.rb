@@ -9,15 +9,18 @@ module Game
       player_img =  Image.load("images/player.png")
       player_img.set_color_key(C_WHITE)
       @player = Player.new(200, 175, player_img, 3)
-      
+      @enemy_img = Image.load("images/enemy.png")
+      @enemy_img.set_color_key(C_BLACK)
       @font = Font.new(28)
     end
 
     # Scene遷移時に自動呼出しされる規約メソッド
     def reload
-      enemy_img = Image.load("images/wall.png")
-      enemy_img.set_color_key(C_BLACK)
-      @enemy = Enemy.new(0,0,enemy_img)
+      s = 800
+      enemy_num = 3
+      enemy_num.times do
+        Enemy.add(0,s += -800,@enemy_img)
+      end
     end
 
     # 1フレーム描画
@@ -25,10 +28,17 @@ module Game
       title_draw
       @player.update
       @player.draw
-      @enemy.update
-      @enemy.draw
-      Sprite.check(@player,@enemy)
-      #@enemy.delete_if{@enemy.vanished?}
+      Enemy.collection.each do |enemy|
+        if enemy.y > 800
+          enemy.out
+        else
+          enemy.update
+          enemy.draw
+        end
+      end
+      Sprite.check(@player,Enemy.collection)
+      Enemy.collection.delete_if{|enemy| enemy.vanished?}
+      p Enemy.collection.size
     end
 
     private

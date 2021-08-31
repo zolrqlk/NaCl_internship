@@ -11,10 +11,14 @@ module Game
         end
     
         def update
-            self.y += 1
+            self.y += 5
         end
     
         def hit(obj)
+            @@collection.delete(self)
+        end
+
+        def out
             @@collection.delete(self)
         end
     end

@@ -21,5 +21,4 @@ Window.loop do
     Scene.move_to(:game) if Input.key_push?(K_G)
     Scene.move_to(:opening) if Input.key_push?(K_O)
     Scene.play
-
-  end
+end
