@@ -16,26 +16,33 @@ module Game
       Score.init
       Shot.init
       Player.init
-      @flag = 0
-      @flag_max = 100
+      flags_set
     end
 
     # 1フレーム描画
     def play
-      # タイトルとスコア表示
+      # タイトル、レベル、スコア表示
       title_draw
+      level_draw
       score_draw
 
       # 秒数カウント
-      @flag += 1
+      @enemy_flag += 1
 
       # 敵の追加と速度上昇
-      if @flag == @flag_max
+      if @enemy_flag == @enemy_flag_max
         x1 = Wall.add_s
         x2 = Enemy.add(x1)
         Wall.add_a(x2)
-        @flag = 0
-        @flag_max -= 1
+        @enemy_flag = 0
+        @count += 1
+      end
+
+      # 7回毎に敵のスピードアップ
+      if @count == 7
+        @count = 0
+        @enemy_flag_max -= 10
+        @speed += 1
       end
 
       # 弾の追加
@@ -60,14 +67,25 @@ module Game
       Sprite.check(Shot.collection,Wall.collection)
     end
 
+    def flags_set
+      @enemy_flag = 0
+      @enemy_flag_max = 120
+      @count = 0
+      @speed = 1
+    end
+
     # タイトル文字列描画
     def title_draw
       Window.draw_font(50, 5, "You are (not) cool.", @font)
     end
 
+    def level_draw
+      Window.draw_font(400, 5, "Level: " + @speed.to_s, @font)
+    end
+
     # スコアの描画
     def score_draw
-      Window.draw_font(650, 5, Score.point.to_s, @font)
+      Window.draw_font(550, 5, "Score: " + Score.point.to_s, @font)
     end
   end
 end
