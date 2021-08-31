@@ -20,21 +20,6 @@ module Game
             elsif self.y + 64 >= 800
                 self.y = 736
             end
-        
-        end
-
-            /プレイヤーがウィンドウからはみ出さないようにする/
-            if self.x <= 0
-                self.x = 0
-            elsif self.x + 64 >= 700
-                self.x = 636
-            end
-            if self.y <= 0
-                self.y = 0
-            elsif self.y + 64 >= 800
-                self.y = 736
-            end
-            
         end
 
         def hit(obj)
