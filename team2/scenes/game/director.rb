@@ -43,8 +43,6 @@ module Game
       Sprite.check(@player,Enemy.collection)
       Enemy.collection.delete_if{|enemy| enemy.vanished?}
       #p Enemy.collection.size
-      @enemy.update
-      @enemy.draw
       if Input.key_push?(K_SPACE)
         @shot = Shot.new(@player.x, @player.y - @shot_img.width, @shot_img)
       end
