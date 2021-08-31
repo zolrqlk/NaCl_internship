@@ -4,6 +4,7 @@ require_relative 'scene'
 require_relative 'scenes/game/director'
 require_relative 'scenes/game/enemy'
 require_relative 'scenes/game/player'
+require_relative 'scenes/game/shot'
 require_relative 'scenes/game/score'
 
 Window.width = 700

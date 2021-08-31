@@ -6,11 +6,15 @@ module Game
 
     # 初期化
     def initialize
-      player_img =  Image.load("images/player.png")
+      player_img = Image.load("images/player.png")
       player_img.set_color_key(C_WHITE)
       @player = Player.new(200, 175, player_img, 3)
-      
+
       @font = Font.new(28)
+
+      @shot_img = Image.load("images/player.png")
+      @shot_img.set_color_key(C_WHITE)
+
     end
 
     # Scene遷移時に自動呼出しされる規約メソッド
@@ -27,6 +31,13 @@ module Game
       @player.draw
       @enemy.update
       @enemy.draw
+      if Input.key_push?(K_SPACE)
+        @shot = Shot.new(@player.x, @player.y - @shot_img.width, @shot_img)
+      end
+      if @shot
+        @shot.update
+        @shot.draw
+      end
       Sprite.check(@player,@enemy)
       #@enemy.delete_if{@enemy.vanished?}
     end
