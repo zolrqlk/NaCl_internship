@@ -28,12 +28,13 @@ module Game
     # Scene遷移時に自動呼出しされる規約メソッド
     def reload
       Enemy.init
+      Wall.init
       s = 800
       enemy_num = 3
       enemy_num.times do
-        Enemy.add(0,s += -800,@enemy_img[0])
+        Wall.add(0,s += -800,@enemy_img[0])
         Enemy.add(192,s,@enemy_img[1])
-        Enemy.add(320,s,@enemy_img[2])
+        Wall.add(320,s,@enemy_img[2])
       end
     end
 
@@ -42,6 +43,18 @@ module Game
       title_draw
       @player.update
       @player.draw
+
+      Wall.collection.each do |wall|
+        if wall.y > 800
+          wall.out
+        else
+          wall.update
+          wall.draw
+        end
+      end
+      Sprite.check(@player,Wall.collection)
+      Wall.collection.delete_if{|wall| wall.vanished?}
+
       Enemy.collection.each do |enemy|
         if enemy.y > 800
           enemy.out
@@ -52,6 +65,7 @@ module Game
       end
       Sprite.check(@player,Enemy.collection)
       Enemy.collection.delete_if{|enemy| enemy.vanished?}
+
       #p Enemy.collection.size
       if Input.key_push?(K_SPACE)
         @shot = Shot.new(@player.x, @player.y - @shot_img.width, @shot_img)
