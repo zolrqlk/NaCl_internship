@@ -1,12 +1,19 @@
 class Director
     def initialize
-        @font = Font.new(24)
+        @player_img =  Image.load("images/player.png")
+        @player_img.set_color_key(C_WHITE)
+
+        @font = Font.new(56)
     end
 
     def reload
     end
 
     def play
-        Window.draw_font(100, 100, "You are (not) cool.")
+        Window.draw_font(120, 200, "You are (not) cool.", @font)
+        Window.draw(318, 600, @player_img)
+
+        
+
     end
 end
