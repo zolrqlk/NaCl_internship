@@ -29,8 +29,9 @@ module Game
       Enemy.init
       Wall.init
       Score.init
+      Shot.init
 
-      @player = Player.new(300, 750, @player_img, 3)
+      @player = Player.new(300, 750, @player_img, 5)
 
       s = 800
       enemy_num = 3
