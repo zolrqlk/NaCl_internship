@@ -1,5 +1,12 @@
 module Game
     class Player < Sprite
+        @@player_img = Image.load("images/player.png")
+        @@player_img.set_color_key(C_WHITE)
+
+        def self.init
+            @@player = self.initialize(300, 750, @@player_img, 5)
+        end
+
         def initialize(x,y,image,speed)
             super(x,y,image)
             @speed = speed

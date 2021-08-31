@@ -1,7 +1,13 @@
 module Game
     class Enemy < Sprite
         @@collection = []
-    
+        @@not_img = Image.load("images/enemy.png")
+        @@not_img.set_color_key(C_BLACK)
+
+        def self.img
+            @@not_img
+        end
+        
         def self.collection
             @@collection
         end

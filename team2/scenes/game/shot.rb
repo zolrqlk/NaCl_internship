@@ -2,7 +2,14 @@ module Game
     class Shot < Sprite
 
         @@collection = []
+
+        @@shot_img = Image.load("images/shot.png")
+        @@shot_img.set_color_key(C_WHITE)
     
+        def self.img
+            @@shot_img
+        end
+        
         def self.collection
             @@collection
         end
