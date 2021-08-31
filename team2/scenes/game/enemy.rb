@@ -21,5 +21,9 @@ module Game
         def out
             @@collection.delete(self)
         end
+
+        def self.init
+            @@collection = []
+        end
     end
 end
