@@ -11,8 +11,7 @@ module Game
         end
     
         def update
-            self.x += rand(5) - 3
-            self.y += rand(5) - 3
+            self.y += 1
         end
     
         def hit(obj)
