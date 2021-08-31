@@ -10,8 +10,8 @@ Window.width = 700
 Window.height = 800
 Window.caption = "team2"
 
-Scene.add(Game::Director.new, :game)
-Scene.move_to(:game)
+Scene.add(Game::Director.new, :opening)
+Scene.move_to(:opening)
 
 Window.loop do
     break if Input.key_push?(K_ESCAPE)
