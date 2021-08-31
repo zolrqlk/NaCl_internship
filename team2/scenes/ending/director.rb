@@ -5,7 +5,8 @@ module Ending
   
       # 初期化
       def initialize
-        @font = Font.new(56)
+        @font1 = Font.new(64)
+        @font2 = Font.new(32)
       end
   
       # Scene遷移時に自動呼出しされる規約メソッド
@@ -15,7 +16,9 @@ module Ending
   
       # 1フレーム描画
       def play
-        Window.draw_font(120, 200, "Game Over", @font)
+        Window.draw_font(150, 200, "Game Over", @font1)
+        Window.draw_font(200, 500, "O : Opening", @font2)
+        Window.draw_font(200, 600, "G : New Game", @font2)
       end
 
     end
