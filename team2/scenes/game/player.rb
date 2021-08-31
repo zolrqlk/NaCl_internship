@@ -8,11 +8,9 @@ module Game
         def update
             self.x += Input.x * @speed
             self.y += Input.y * @speed
-        end
-    
+
         def hit(obj)
             
         end
     end
 end
-  
