@@ -14,7 +14,7 @@ Window.caption = "team2"
 
 Scene.add(Game::Director.new, :game)
 Scene.add(Director.new, :opening)
-Scene.move_to(:opening)
+Scene.move_to(:game)
 
 Window.loop do
     break if Input.key_push?(K_ESCAPE)
