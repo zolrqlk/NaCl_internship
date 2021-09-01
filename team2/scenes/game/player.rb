@@ -27,7 +27,7 @@ module Game
         end
 
         def hit(obj)
-            
+            Scene.move_to(:ending)
         end
     end
 end
