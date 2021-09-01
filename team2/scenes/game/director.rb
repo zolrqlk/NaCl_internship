@@ -28,6 +28,7 @@ module Game
     def reload
       Enemy.init
       Wall.init
+      Score.init
       Shot.init
 
       @player = Player.new(300, 750, @player_img, 5)
@@ -87,6 +88,7 @@ module Game
           Sprite.check(shot,Wall.collection)
         end
       end
+      score_draw
     end
 
     private
@@ -94,6 +96,10 @@ module Game
     # タイトル文字列描画
     def title_draw
       Window.draw_font(50, 5, "You are (not) cool.", @font)
+    end
+
+    def score_draw
+      Window.draw_font(650, 5, Score.point.to_s, @font)
     end
   end
 end
