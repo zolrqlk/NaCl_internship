@@ -9,7 +9,7 @@ require_relative 'scenes/game/score'
 require_relative 'scenes/game/wall'
 
 require_relative 'scenes/opening/director'
-require_relative 'scenes/opening/op_shot'
+require_relative 'scenes/opening/op_object'
 
 require_relative 'scenes/ending/director'
 
