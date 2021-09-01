@@ -9,13 +9,15 @@ require_relative 'scenes/game/score'
 require_relative 'scenes/game/wall'
 
 require_relative 'scenes/opening/director'
+require_relative 'scenes/opening/op_shot'
+
 
 Window.width = 700
 Window.height = 800
 Window.caption = "team2"
 
 Scene.add(Game::Director.new, :game)
-Scene.add(Director.new, :opening)
+Scene.add(Opening::Director.new, :opening)
 Scene.move_to(:game)
 
 Window.loop do
