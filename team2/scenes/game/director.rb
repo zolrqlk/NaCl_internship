@@ -6,8 +6,9 @@ module Game
 
     # 初期化
     def initialize
-      @player_img = Image.load("images/player.png")
-      @player_img.set_color_key(C_WHITE)
+      player_img = Image.load("images/player.png")
+      player_img.set_color_key(C_WHITE)
+      @player = Player.new(200, 175, player_img, 3)
       enemy_img_base = Image.load("images/wall.png")
       enemy_img_base.set_color_key(C_BLACK)
       not_img = Image.load("images/enemy.png")
@@ -19,7 +20,7 @@ module Game
 
       @font = Font.new(28)
       
-      @shot_img = Image.load("images/player.png")
+      @shot_img = Image.load("images/shot.png")
       @shot_img.set_color_key(C_WHITE)
 
     end
@@ -28,9 +29,6 @@ module Game
     def reload
       Enemy.init
       Wall.init
-
-      @player = Player.new(300, 750, @player_img, 3)
-
       s = 800
       enemy_num = 3
       enemy_num.times do
