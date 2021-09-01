@@ -52,8 +52,6 @@ module Game
           wall.draw
         end
       end
-      Sprite.check(@player,Wall.collection)
-      Wall.collection.delete_if{|wall| wall.vanished?}
 
       Enemy.collection.each do |enemy|
         if enemy.y > 800
@@ -63,8 +61,9 @@ module Game
           enemy.draw
         end
       end
-      Sprite.check(@player,Enemy.collection)
-      Enemy.collection.delete_if{|enemy| enemy.vanished?}
+      #enemyとwallがプレイヤーに当たったときの判定(プレイヤーが消える)
+      Sprite.check(Enemy.collection,@player)
+      Sprite.check(Wall.collection,@player)
 
       #p Enemy.collection.size
 
@@ -79,6 +78,10 @@ module Game
             shot.update
             shot.draw
           end
+          #弾がenemy(not)に当たったらどっちも消える
+          Sprite.check(shot,Enemy.collection)
+          #弾がwallに当たったら弾だけ消える
+          Sprite.check(shot,Wall.collection)
         end
       end
     end
