@@ -12,7 +12,7 @@ module Game
       @enemy_img = Image.load("images/enemy.png")
       @enemy_img.set_color_key(C_BLACK)
       @font = Font.new(28)
-
+      
       @shot_img = Image.load("images/player.png")
       @shot_img.set_color_key(C_WHITE)
 
@@ -43,12 +43,19 @@ module Game
       Sprite.check(@player,Enemy.collection)
       Enemy.collection.delete_if{|enemy| enemy.vanished?}
       #p Enemy.collection.size
+
       if Input.key_push?(K_SPACE)
-        @shot = Shot.new(@player.x, @player.y - @shot_img.width, @shot_img)
+        Shot.push(@player.x, @player.y - @shot_img.width, @shot_img)
       end
-      if @shot
-        @shot.update
-        @shot.draw
+      Shot.collection.each do |shot|
+        if shot
+          if shot.y < -100
+            shot.out
+          else
+            shot.update
+            shot.draw
+          end
+        end
       end
     end
 
