@@ -19,6 +19,10 @@ module Game
             @@collection.delete(self)
         end
 
+        def shot(obj)
+            @@collection.delete(self)
+        end
+
         def out
             @@collection.delete(self)
         end

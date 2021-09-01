@@ -21,6 +21,10 @@ module Game
                 self.y = 736
             end
         end
+        
+        def shot(obj)
+            
+        end
 
         def hit(obj)
             
