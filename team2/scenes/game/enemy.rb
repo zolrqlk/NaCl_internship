@@ -16,6 +16,7 @@ module Game
     
         def hit(obj)
             @@collection.delete(self)
+            Score.add
         end
 
         def out
