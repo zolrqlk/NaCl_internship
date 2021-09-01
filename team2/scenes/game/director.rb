@@ -32,12 +32,13 @@ module Game
 
       @player = Player.new(300, 750, @player_img, 5)
 
-      s = 800
-      enemy_num = 3
+      s = 0
+      enemy_num = 10
       enemy_num.times do
-        Wall.add(0,s += -800,@enemy_img[0])
-        Enemy.add(192,s,@enemy_img[1])
-        Wall.add(320,s,@enemy_img[2])
+        wall_x = rand(-50..400)
+        Wall.add(wall_x,s += -400,@enemy_img[0])
+        Enemy.add(wall_x + 192,s,@enemy_img[1])
+        Wall.add(wall_x + 320,s,@enemy_img[2])
       end
     end
 
