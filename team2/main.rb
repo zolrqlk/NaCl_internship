@@ -26,6 +26,5 @@ Window.loop do
     break if Input.key_push?(K_ESCAPE)
     Scene.move_to(:game) if Input.key_push?(K_G)
     Scene.move_to(:opening) if Input.key_push?(K_O)
-    Scene.move_to(:ending) if Input.key_push?(K_E)
     Scene.play
 end
