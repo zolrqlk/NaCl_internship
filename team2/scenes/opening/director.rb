@@ -34,5 +34,5 @@ module Opening
             end
                     
         end
-    end
+    end    
 end
