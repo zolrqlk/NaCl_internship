@@ -5,13 +5,14 @@ require_relative 'scenes/game/director'
 require_relative 'scenes/game/enemy'
 require_relative 'scenes/game/player'
 require_relative 'scenes/game/shot'
-require_relative 'scenes/game/score'
 require_relative 'scenes/game/wall'
 
 require_relative 'scenes/opening/director'
 require_relative 'scenes/opening/op_object'
 
 require_relative 'scenes/ending/director'
+
+require_relative 'score'
 
 Window.width = 700
 Window.height = 800

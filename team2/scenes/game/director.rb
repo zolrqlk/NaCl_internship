@@ -19,7 +19,7 @@ module Game
 
       @font = Font.new(28)
       
-      @shot_img = Image.load("images/player.png")
+      @shot_img = Image.load("images/shot.png")
       @shot_img.set_color_key(C_WHITE)
 
     end
@@ -28,8 +28,10 @@ module Game
     def reload
       Enemy.init
       Wall.init
+      Score.init
+      Shot.init
 
-      @player = Player.new(300, 750, @player_img, 3)
+      @player = Player.new(300, 750, @player_img, 5)
 
       s = 800
       enemy_num = 3
@@ -86,6 +88,7 @@ module Game
           Sprite.check(shot,Wall.collection)
         end
       end
+      score_draw
     end
 
     private
@@ -93,6 +96,10 @@ module Game
     # タイトル文字列描画
     def title_draw
       Window.draw_font(50, 5, "You are (not) cool.", @font)
+    end
+
+    def score_draw
+      Window.draw_font(650, 5, Score.point.to_s, @font)
     end
   end
 end
