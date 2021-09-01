@@ -6,6 +6,7 @@ require_relative 'scenes/game/enemy'
 require_relative 'scenes/game/player'
 require_relative 'scenes/game/shot'
 require_relative 'scenes/game/score'
+require_relative 'scenes/game/wall'
 
 require_relative 'scenes/opening/director'
 

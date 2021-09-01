@@ -1,5 +1,5 @@
 module Game
-    class Enemy < Sprite
+    class Wall < Sprite
         @@collection = []
     
         def self.collection
@@ -15,7 +15,7 @@ module Game
         end
     
         def hit(obj)
-            @@collection.delete(self)
+            
         end
 
         def out
