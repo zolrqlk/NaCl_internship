@@ -2,7 +2,14 @@ module Game
     class Shot < Sprite
 
         @@collection = []
+
+        @@shot_img = Image.load("images/shot.png")
+        @@shot_img.set_color_key(C_WHITE)
     
+        def self.img
+            @@shot_img
+        end
+        
         def self.collection
             @@collection
         end
@@ -29,6 +36,19 @@ module Game
 
         def self.init
             @@collection = []
+        end
+
+        def self.move
+            self.collection.each do |shot|
+                if shot
+                  if shot.y < -100
+                    shot.out
+                  else
+                    shot.update
+                    shot.draw
+                  end          
+                end
+            end
         end
     end
 end
