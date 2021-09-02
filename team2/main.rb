@@ -22,7 +22,7 @@ Window.caption = "team2"
 Scene.add(Game::Director.new, :game)
 Scene.add(Opening::Director.new, :opening)
 Scene.add(Ending::Director.new, :ending)
-Scene.move_to(:game)
+Scene.move_to(:opening)
 
 sound = Sound.new("sounds/shot_effect_01_edited.wav")
 

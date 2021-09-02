@@ -3,26 +3,30 @@ module Opening
         def initialize
             @player_img =  Image.load("images/player.png")
             @player_img.set_color_key(C_WHITE)
+            @youre_img =  Image.load("images/wall_you_are.png")
+            @cool_img =  Image.load("images/wall_cool.png")
+            @opening_img =  Image.load("images/opening.png")
 
             @op_shot_img =  Image.load("images/shot.png")
             @op_not_img =  Image.load("images/enemy.png")
-
-
 
             @font = Font.new(56)
         end
 
         def reload
-            Op_not.add(320, 200, @op_not_img)
+            Op_not.add(340, 200, @op_not_img)
+            @flag = 0
 
         end
 
         #オープニング画面の要素の描画
         def play
-            Window.draw_font(120, 200, "You are", @font)
-            Window.draw_font(450, 200, "cool.", @font)
-            Window.draw(340, 600, @player_img)
 
+
+            Window.draw(70, 200, @youre_img)
+            Window.draw(465, 195, @cool_img)
+            Window.draw(360, 600, @player_img)
+            Window.draw(140, 700, @opening_img)
 
             Op_not.collection.each do |op_not|
                 op_not.update
@@ -32,8 +36,8 @@ module Opening
 
 
 
-            if Input.key_push?(K_Z)
-                Op_shot.add(340, 532, @op_shot_img)
+            if Input.key_push?(K_SPACE)
+                Op_shot.add(360, 532, @op_shot_img)
             end
 
 
@@ -44,10 +48,21 @@ module Opening
                 end
     
 
-                if op_shot
-                    Sprite.check(op_shot, Op_not.collection)
+                if Sprite.check(op_shot, Op_not.collection)
+                    Op_not.collection.each do |op_not|
+                        op_not.update
+                        op_not.draw
+                    end
+                    @flag = 1
                 end
+            end
 
+            if @flag >=1
+                @flag += 1
+            end
+
+            if @flag == 60
+                Scene.move_to(:game)
             end
 
         end
