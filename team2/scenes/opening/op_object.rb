@@ -13,7 +13,7 @@ module Opening
 
         def update
     
-            self.y -= 5
+            self.y -= 10
 
 
         end
