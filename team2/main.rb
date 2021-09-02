@@ -6,6 +6,7 @@ require_relative 'scenes/game/enemy'
 require_relative 'scenes/game/player'
 require_relative 'scenes/game/shot'
 require_relative 'scenes/game/wall'
+require_relative 'scenes/game/sounds'
 
 require_relative 'scenes/opening/director'
 require_relative 'scenes/opening/op_object'
@@ -23,9 +24,17 @@ Scene.add(Opening::Director.new, :opening)
 Scene.add(Ending::Director.new, :ending)
 Scene.move_to(:opening)
 
+sound = Sound.new("sounds/shot_effect_01_edited.wav")
+
+bgm = Sound.new("sounds/bgm_01.mid")
+bgm.play
+
 Window.loop do
     break if Input.key_push?(K_ESCAPE)
     Scene.move_to(:game) if Input.key_push?(K_G)
     Scene.move_to(:opening) if Input.key_push?(K_O)
     Scene.play
+    if Input.key_push?(K_SPACE)
+        sound.play
+    end
 end
