@@ -16,6 +16,7 @@ module Game
       Score.init
       Shot.init
       Player.init
+      Sounds.init
       @flag = 0
       @flag_max = 100
     end
@@ -41,6 +42,7 @@ module Game
       # 弾の追加
       if Input.key_push?(K_SPACE)
         Shot.push(Player.x, Player.y - Shot.img.width, Shot.img)
+        Sounds.shot_effect
       end
 
       # 各オブジェクトの移動
