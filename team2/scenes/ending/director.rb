@@ -7,6 +7,8 @@ module Ending
       def initialize
         @font1 = Font.new(64)
         @font2 = Font.new(32)
+        @gameover_img =  Image.load("images/gameover.png")
+        @admire_img =  Image.load("images/admire.png")
       end
   
       # Scene遷移時に自動呼出しされる規約メソッド
@@ -16,13 +18,16 @@ module Ending
   
       # 1フレーム描画
       def play
-        Window.draw_font(150, 200, "Game Over", @font1)
-        str = "Score :  " + Score.point.to_s
-        Window.draw_font(200, 400, str, @font2)
-        Window.draw_font(200, 500, "O : Opening", @font2)
-        Window.draw_font(200, 600, "G : New Game", @font2)
-      end
+        Window.draw(220, 100, @gameover_img)
+        Window.draw(30, 200, @admire_img)
+        str = "Self-esteem :  " + Score.point.to_s
+        Window.draw_font(130, 400, str, @font1)
+        Window.draw_font(270, 550, "O : Reset", @font2)
+        Window.draw_font(270, 600, "G : Try again", @font2)
+        Window.draw_font(400, 700, "sound:MaouDamashii", @font2)
+        Window.draw_font(400, 750, "bgm:Cyber-Rainforce", @font2)
 
+      end
     end
   end
   

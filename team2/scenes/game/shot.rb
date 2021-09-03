@@ -15,7 +15,7 @@ module Game
         end
     
         def self.push(x, y,image)
-            @@collection << self.new(x, y, image)
+            @@collection << self.new(x + 19, y, image)
         end
     
         def update

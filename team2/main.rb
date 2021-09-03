@@ -18,7 +18,7 @@ require_relative 'score'
 
 Window.width = 700
 Window.height = 800
-Window.caption = "team2"
+Window.caption = "You are (not) cool - team2"
 
 Scene.add(Game::Director.new, :game)
 Scene.add(Opening::Director.new, :opening)
