@@ -7,6 +7,7 @@ module Game
     # 初期化
     def initialize
       @font = Font.new(28)
+      @title_img =  Image.load("images/title.png")
     end
 
     # Scene遷移時に自動呼出しされる規約メソッド
@@ -78,16 +79,18 @@ module Game
 
     # タイトル文字列描画
     def title_draw
-      Window.draw_font(50, 5, "You are (not) cool.", @font)
+      Window.draw(10, 3, @title_img)
     end
 
+    # レベルの描画
     def level_draw
       Window.draw_font(400, 5, "Level: " + @speed.to_s, @font)
     end
 
     # スコアの描画
     def score_draw
-      Window.draw_font(550, 5, "Score: " + Score.point.to_s, @font)
+      Window.draw_font(470, 770, "Self-esteem", @font)
+      Window.draw_font(670, 770, Score.point.to_s, @font)
     end
   end
 end

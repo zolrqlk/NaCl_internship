@@ -20,7 +20,7 @@ module Opening
         def reload
             Op_not.add(340, 200, @op_not_img)
             @flag = 0
-
+            @shot_exist = 0
         end
 
         # 1フレーム描画
@@ -36,15 +36,18 @@ module Opening
                 op_not.draw
             end
 
-            if Input.key_push?(K_SPACE)
-                Op_shot.add(360, 532, @op_shot_img)
-                Sounds.shot_effect
+            if @shot_exist < 1
+                if Input.key_push?(K_SPACE)
+                    Op_shot.add(379, 532, @op_shot_img)
+                    Sounds.shot_effect
+                end
             end
 
             Op_shot.collection.each do |op_shot|
                 if op_shot
                     op_shot.update
                     op_shot.draw
+                    @shot_exist = 1
                 end
 
                 if Sprite.check(op_shot, Op_not.collection)

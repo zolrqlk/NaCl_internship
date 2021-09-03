@@ -20,8 +20,8 @@ module Ending
       def play
         Window.draw(220, 100, @gameover_img)
         Window.draw(30, 200, @admire_img)
-        str = "Score :  " + Score.point.to_s
-        Window.draw_font(200, 400, str, @font1)
+        str = "Self-esteem :  " + Score.point.to_s
+        Window.draw_font(130, 400, str, @font1)
         Window.draw_font(270, 550, "O : Reset", @font2)
         Window.draw_font(270, 600, "G : Try again", @font2)
         Window.draw_font(400, 700, "sound:MaouDamashii", @font2)
