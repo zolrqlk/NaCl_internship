@@ -19,6 +19,7 @@ module Game
     
         def hit(obj)
             @@collection.delete(self)
+            Sounds.hit_effect
             Score.add
         end
 

@@ -13,7 +13,7 @@ module Opening
             @op_shot_img =  Image.load("images/shot.png")
             @op_not_img =  Image.load("images/enemy.png")
 
-            @font = Font.new(56)
+            @font = Font.new(28)
         end
 
        # Scene遷移時に自動呼出しされる規約メソッド
@@ -21,11 +21,13 @@ module Opening
             Op_not.add(340, 200, @op_not_img)
             @flag = 0
             @shot_exist = 0
+            Sounds.init
+            Sounds.bgm_op
         end
 
         # 1フレーム描画
         def play
-
+            Window.draw_font(10, 3, "NaCl_internship_2021_team2", @font)
             Window.draw(70, 200, @youre_img)
             Window.draw(465, 195, @cool_img)
             Window.draw(360, 600, @player_img)
@@ -55,6 +57,7 @@ module Opening
                         op_not.update
                         op_not.draw
                     end
+                    Sounds.hit_effect
                     @flag = 1
                 end
             end
@@ -65,7 +68,8 @@ module Opening
 
             if @flag == 30
                 Scene.move_to(:game)
-                Sounds.bgm
+                Sounds.init
+                Sounds.bgm_game
             end
 
         end

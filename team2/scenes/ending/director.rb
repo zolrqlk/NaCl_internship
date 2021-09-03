@@ -25,8 +25,8 @@ module Ending
         Window.draw_font(270, 550, "O : Reset", @font2)
         Window.draw_font(270, 600, "G : Try again", @font2)
         Window.draw_font(400, 700, "sound:MaouDamashii", @font2)
-        Window.draw_font(400, 750, "bgm:Cyber-Rainforce", @font2)
-
+        Window.draw_font(400, 730, "bgm:Cyber-Rainforce", @font2)
+        Window.draw_font(486, 760, "MaouDamashii", @font2)
       end
     end
   end
