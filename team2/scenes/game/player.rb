@@ -42,6 +42,7 @@ module Game
 
         def hit(obj)
             Scene.move_to(:ending)
+            Sounds.init
         end
 
         def self.init

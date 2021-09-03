@@ -10,6 +10,7 @@ require_relative 'scenes/game/sounds'
 
 require_relative 'scenes/opening/director'
 require_relative 'scenes/opening/op_object'
+require_relative 'scenes/opening/sounds'
 
 require_relative 'scenes/ending/director'
 
@@ -24,17 +25,19 @@ Scene.add(Opening::Director.new, :opening)
 Scene.add(Ending::Director.new, :ending)
 Scene.move_to(:opening)
 
-sound = Sound.new("sounds/shot_effect_01_edited.wav")
-
-bgm = Sound.new("sounds/bgm_01.mid")
-bgm.play
+sound = Sounds.new()
 
 Window.loop do
+    f = 1
     break if Input.key_push?(K_ESCAPE)
-    Scene.move_to(:game) if Input.key_push?(K_G)
-    Scene.move_to(:opening) if Input.key_push?(K_O)
-    Scene.play
-    if Input.key_push?(K_SPACE)
-        sound.play
+    if f == 1 && Input.key_push?(K_G)
+        Scene.move_to(:game)
+        sound.bgm
+        f = 0
     end
+    if f == 1 && Input.key_push?(K_O)
+        Scene.move_to(:opening)
+        sound.bgm.stop
+    end
+    Scene.play
 end

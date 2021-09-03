@@ -38,6 +38,7 @@ module Opening
 
             if Input.key_push?(K_SPACE)
                 Op_shot.add(360, 532, @op_shot_img)
+                Sounds.shot_effect
             end
 
 
@@ -63,6 +64,7 @@ module Opening
 
             if @flag == 60
                 Scene.move_to(:game)
+                Sounds.bgm
             end
 
         end

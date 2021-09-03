@@ -4,7 +4,7 @@ class Sounds
         @@bgm = Sound.new("sounds/bgm_01.mid")
     end
 
-    def bgm
+    def self.bgm
         @@bgm.play
     end
 
